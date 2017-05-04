@@ -6,9 +6,22 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import {
+  ShowProfileComponent,
+  AccueilComponent
+} from './containers';
+
+import {
+  MapComponent
+} from './components';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShowProfileComponent,
+    AccueilComponent,
+    MapComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
