@@ -24,7 +24,7 @@ import {
     AccueilComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'candidats' }),
     FormsModule,
     HttpModule,
     AppRoutingModule
