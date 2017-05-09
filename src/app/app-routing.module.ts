@@ -3,16 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {
   AccueilComponent,
+  LayoutComponent,
   ShowProfileComponent,
 } from './containers';
 
 const routes: Routes = [
-  {
-    path: '',
-    children: [
-      { path: '', component: AccueilComponent }
-    ]
-  }
+  { path: '', component: AccueilComponent },
 ];
 
 @NgModule({
