@@ -4,11 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   AccueilComponent,
   LayoutComponent,
+  PageCandidatComponent,
   ShowProfileComponent,
 } from './containers';
 
 const routes: Routes = [
-  { path: '', component: AccueilComponent },
+  { path: '', component: PageCandidatComponent },
 ];
 
 @NgModule({

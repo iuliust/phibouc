@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { AppComponent } from './app.component';
 import {
   AccueilComponent,
   LayoutComponent,
+  PageCandidatComponent,
   ShowProfileComponent,
 } from './containers';
 
@@ -26,11 +28,13 @@ import {
     MapComponent,
     AccueilComponent,
     TopNavComponent,
-    LayoutComponent
+    LayoutComponent,
+    PageCandidatComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'candidats' }),
     MaterialModule.forRoot(),
+    FlexLayoutModule,
     FormsModule,
     HttpModule,
     AppRoutingModule
