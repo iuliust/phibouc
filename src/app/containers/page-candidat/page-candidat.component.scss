@@ -1,0 +1,22 @@
+:host() {
+    .local-menu {
+        padding: .5em;
+
+        ul {
+            background-color: white;
+
+            li {
+                padding: 2px 0;
+                border-bottom: 1px solid grey;
+
+                a {
+                    display: block;
+                    padding: 8px 16px;
+                }
+            }
+        }
+    }
+    .local-candidat {
+        background-color: purple;
+    }
+}

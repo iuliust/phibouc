@@ -9,7 +9,7 @@ import {
 } from './containers';
 
 const routes: Routes = [
-  { path: '', component: PageCandidatComponent },
+  { path: '', component: PageCandidatComponent, children: [] },
 ];
 
 @NgModule({
