@@ -29,6 +29,7 @@ module.exports = {
     ],
     module: {
         rules: [
+            { test: /\.scss$/, use: ['to-string-loader', 'css-loader', 'sass-loader'] },
             { test: /\.css$/, loader: 'raw-loader' },
             { test: /\.html$/, loader: 'raw-loader' },
             { test: /\.ts$/, loader: '@ngtools/webpack' },

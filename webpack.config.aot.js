@@ -4,9 +4,6 @@ const path = require('path');
 
 module.exports = {
     devtool: 'source-map',
-    // It will pull in the Angular libraries used by the app,
-    // but it will not pull in the Angular compiler, since it's
-    // not needed in an AOT-compiled app.
     entry: {
         main: './src/main-aot.ts',
     },
@@ -14,14 +11,11 @@ module.exports = {
         extensions: ['.ts', '.js']
     },
     target: 'node',
-    // Tell Webpack where to put the bundles
     output: {
         path: path.join(__dirname, 'src/dist'),
         filename: 'build.js'
     },
     plugins: [
-        // The tsConfigPath tells the plugin where to find the
-        // TypeScript configuration file to use when compiling
         new ngtools.AotPlugin({
             tsConfigPath: './tsconfig-aot.json'
         }),
@@ -29,6 +23,7 @@ module.exports = {
     ],
     module: {
         rules: [
+            { test: /\.scss$/, use: ['to-string-loader', 'css-loader', 'sass-loader'] },
             { test: /\.css$/, loader: 'raw-loader' },
             { test: /\.html$/, loader: 'raw-loader' },
             { test: /\.ts$/, loader: '@ngtools/webpack' },

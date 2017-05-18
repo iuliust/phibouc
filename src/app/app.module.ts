@@ -10,6 +10,9 @@ import { AppComponent } from './app.component';
 
 import {
   AccueilComponent,
+  CandidatAgendaComponent,
+  CandidatPresentationComponent,
+  CandidatPublicationsComponent,
   LayoutComponent,
   PageCandidatComponent,
   ShowProfileComponent,
@@ -29,11 +32,14 @@ import {
     AccueilComponent,
     TopNavComponent,
     LayoutComponent,
-    PageCandidatComponent
+    PageCandidatComponent,
+    CandidatPresentationComponent,
+    CandidatAgendaComponent,
+    CandidatPublicationsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'candidats' }),
-    MaterialModule.forRoot(),
+    MaterialModule,
     FlexLayoutModule,
     FormsModule,
     HttpModule,
