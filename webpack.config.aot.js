@@ -27,11 +27,6 @@ module.exports = {
             { test: /\.css$/, loader: 'raw-loader' },
             { test: /\.html$/, loader: 'raw-loader' },
             { test: /\.ts$/, loader: '@ngtools/webpack' },
-            // {
-            //     test: /\.scss$/,
-            //     exclude: /node_modules/,
-            //     loader: 'style-loader!css-loader!sass-loader'
-            // },
         ]
     }
 };
