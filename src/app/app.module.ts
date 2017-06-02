@@ -40,7 +40,7 @@ import {
   imports: [
     BrowserModule.withServerTransition({ appId: 'candidats' }),
     MaterialModule,
-    FlexLayoutModule,
+    // FlexLayoutModule,
     FormsModule,
     HttpModule,
     AppRoutingModule
