@@ -3,10 +3,19 @@ import { enableProdMode } from '@angular/core';
 import { AppServerModuleNgFactory } from '../../aot/src/uni/app.server.ngfactory';
 import * as express from 'express';
 import { ngUniversalEngine } from './universal-engine';
+import * as compression from 'compression';
+import * as fs from 'fs';
+import * as path from 'path';
+import { createServer, Server } from 'spdy';
 
 enableProdMode();
 
 const server = express();
+const serverOptions = {
+  key: fs.readFileSync('config/server.key'),
+  cert: fs.readFileSync('config/server.crt'),
+};
+server.use(compression());
 
 // set our angular engine as the handler for html files, so it will be used to render them.
 server.engine('html', ngUniversalEngine({
@@ -32,8 +41,12 @@ server.get(['/*.(js|css|svg|png|jpg)'], (req, res, next) => {
         }
     });
 });
-
-// start the server
-server.listen(3200, () => {
-    console.log('listening on port 3200...');
-});
+const http2server = createServer(serverOptions, server as any);
+http2server.listen(3200, (error: Error) => {
+    if (error) {
+      console.error(error);
+      return process.exit(1);
+    } else {
+      console.log('listening on port 3200');
+    }
+  });
