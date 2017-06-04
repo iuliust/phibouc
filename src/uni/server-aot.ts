@@ -2,6 +2,8 @@ import 'zone.js/dist/zone-node';
 import { enableProdMode } from '@angular/core';
 import { AppServerModuleNgFactory } from '../../aot/src/uni/app.server.ngfactory';
 import * as express from 'express';
+import * as cors from 'cors';
+import * as proxy from 'express-http-proxy';
 import { ngUniversalEngine } from './universal-engine';
 import * as compression from 'compression';
 import * as fs from 'fs';
@@ -16,6 +18,11 @@ const serverOptions = {
   cert: fs.readFileSync('config/server.crt'),
 };
 server.use(compression());
+// server.use('/graphql', (req, res) => {
+//   return res.redirect('https://localhost:3000/graphql');
+// });
+server.use(cors());
+// server.use('/graphql', proxy('https://localhost:3000/graphql'));
 
 // set our angular engine as the handler for html files, so it will be used to render them.
 server.engine('html', ngUniversalEngine({
@@ -26,7 +33,7 @@ server.engine('html', ngUniversalEngine({
 server.set('views', 'src');
 
 // handle requests for routes in the app.  ngExpressEngine does the rendering.
-server.get(['/'], (req, res) => {
+server.get(['/', 'presentation', 'publications', 'agenda'], (req, res) => {
     res.render('index-aot.html', {req});
 });
 

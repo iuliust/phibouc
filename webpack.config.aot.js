@@ -10,7 +10,7 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.js']
     },
-    target: 'node',
+    target: 'web',
     output: {
         path: path.join(__dirname, 'src/dist'),
         filename: 'build.js'

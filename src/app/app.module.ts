@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { ApolloClient, createNetworkInterface } from 'apollo-client';
+import { ApolloModule } from 'apollo-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +25,18 @@ import {
   TopNavComponent,
 } from './components';
 
+const apolloClientOptions = {};
+const client: ApolloClient = new ApolloClient({
+  networkInterface: createNetworkInterface({
+    // uri: 'https://graphql:3000/graphql',
+    uri: 'graphql',
+  }),
+});
+
+export function provideApolloClient(): ApolloClient {
+  return client;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +53,8 @@ import {
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'candidats' }),
+    ApolloModule.forRoot(provideApolloClient),
     MaterialModule,
-    // FlexLayoutModule,
     FormsModule,
     HttpModule,
     AppRoutingModule
