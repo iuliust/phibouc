@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "serve": "ng s --proxy-config proxy.config.json",
+    "serve": "ng s --proxy-config proxy.config.json --ssl",
     "build:aot": "webpack --config webpack.config.aot.js",
     "serve:aot": "lite-server -c=bs-config.aot.js",
     "build:uni": "webpack --config webpack.config.uni.js",

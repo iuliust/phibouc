@@ -2,7 +2,25 @@
   <h2>Fernand Mouton et Irène de Lutèce</h2>
   <h3>pour la 2ème circonscription de Plougny</h3>
 </div>
+
+<article>
+  <p>ajouter une citation</p>
+  <form #quoteInput="ngForm" (ngSubmit)="addQuote(newQuote.text, newQuote.author)">
+    <label for="quoteText">citation</label>
+    <input type="text" id="quoteText" name="quoteText"
+        [(ngModel)]="newQuote.text">
+    <label for="quoteAuthor">auteur</label>
+    <select id="quoteAuthor" name="quoteAuthor"
+        [(ngModel)]="newQuote.author">
+      <option [value]="author.id" *ngFor="let author of authorsList">{{ author.firstName }} {{ author.lastName }}</option>
+    </select>
+    <button type="submit">envoyer</button>
+    <pre>{{ newQuote | json:true }}</pre>
+  </form>
+</article>
+
 <article *ngFor="let item of quotesList">
+  <span (click)="deleteQuote(item.id)">[Supprimer]</span>
   <blockquote>{{ item.text }}</blockquote>
   <span>{{ item.author?.firstName }} {{ item.author?.lastName }}</span>
 </article>
