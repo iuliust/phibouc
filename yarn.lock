@@ -175,7 +175,7 @@
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
 
-"@types/graphql@^0.9.0":
+"@types/graphql@^0.9.0", "@types/graphql@^0.9.1":
   version "0.9.1"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.9.1.tgz#b04ebe84bc997cc60dbea2ed4d0d4342c737f99d"
 
@@ -217,6 +217,12 @@
 "@types/spdy@^3.4.2":
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/@types/spdy/-/spdy-3.4.2.tgz#3b279e5e0d09fd830ae6ead9ecd292ce1cf26712"
+  dependencies:
+    "@types/node" "*"
+
+"@types/ws@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/ws/-/ws-3.0.0.tgz#4682a04d385484e73f7d8275cabc8b672d66143c"
   dependencies:
     "@types/node" "*"
 
@@ -571,7 +577,7 @@ babylon@^6.11.0, babylon@^6.13.0, babylon@^6.15.0:
   version "6.17.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.17.0.tgz#37da948878488b9c4e3c4038893fa3314b3fc932"
 
-backo2@1.0.2:
+backo2@1.0.2, backo2@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
 
@@ -1601,6 +1607,10 @@ es6-promise@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-3.3.1.tgz#a08cdde84ccdbf34d027a1451bc91d4bcd28a613"
 
+es6-promise@^4.0.5:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.1.0.tgz#dda03ca8f9f89bc597e689842929de7ba8cebdf0"
+
 escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
@@ -1628,6 +1638,10 @@ etag@~1.8.0:
 eventemitter3@1.x.x:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-1.2.0.tgz#1c86991d816ad1e504750e73874224ecf3bec508"
+
+eventemitter3@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-2.0.3.tgz#b5e1079b59fb5e1ba2771c0a993be060a58c99ba"
 
 events@^1.0.0:
   version "1.1.1"
@@ -2020,6 +2034,14 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6:
 graphql-anywhere@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-3.0.1.tgz#73531db861174c8f212eafb9f8e84944b38b4e5a"
+
+graphql-subscriptions@^0.4.1:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/graphql-subscriptions/-/graphql-subscriptions-0.4.2.tgz#a1a41cebdb95103be348c409d0ed6096ad858455"
+  dependencies:
+    "@types/graphql" "^0.9.1"
+    es6-promise "^4.0.5"
+    iterall "^1.1.1"
 
 graphql-tag@^2.0.0, graphql-tag@^2.2.1:
   version "2.2.1"
@@ -2583,7 +2605,7 @@ istanbul-reports@^1.1.0:
   dependencies:
     handlebars "^4.0.3"
 
-iterall@^1.1.0:
+iterall@^1.1.0, iterall@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.1.tgz#f7f0af11e9a04ec6426260f5019d9fcca4d50214"
 
@@ -2853,6 +2875,14 @@ lodash.camelcase@^4.3.0:
 lodash.clonedeep@^4.3.2, lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+
+lodash.isobject@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/lodash.isobject/-/lodash.isobject-3.0.2.tgz#3c8fb8d5b5bf4bf90ae06e14f2a530a4ed935e1d"
+
+lodash.isstring@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/lodash.isstring/-/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
 
 lodash.memoize@^4.1.2:
   version "4.1.2"
@@ -4174,7 +4204,7 @@ rxjs@^5.0.1, rxjs@^5.4.0:
   dependencies:
     symbol-observable "^1.0.1"
 
-safe-buffer@^5.0.1:
+safe-buffer@^5.0.1, safe-buffer@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
 
@@ -4639,6 +4669,21 @@ stylus@^0.54.5:
     sax "0.5.x"
     source-map "0.1.x"
 
+subscriptions-transport-ws@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.7.1.tgz#32d6a0ab2e29e2246b48952a6ff431774c08c93d"
+  dependencies:
+    "@types/ws" "^3.0.0"
+    backo2 "^1.0.2"
+    eventemitter3 "^2.0.3"
+    graphql-subscriptions "^0.4.1"
+    graphql-tag "^2.0.0"
+    iterall "^1.1.1"
+    lodash.assign "^4.2.0"
+    lodash.isobject "^3.0.2"
+    lodash.isstring "^4.0.1"
+    ws "^3.0.0"
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
@@ -4866,6 +4911,10 @@ uid-number@^0.0.6:
 ultron@1.0.x:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
+
+ultron@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.1.0.tgz#b07a2e6a541a815fc6a34ccd4533baec307ca864"
 
 uniq@^1.0.1:
   version "1.0.1"
@@ -5228,6 +5277,13 @@ ws@1.1.2, ws@^1.0.1:
   dependencies:
     options ">=0.0.5"
     ultron "1.0.x"
+
+ws@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-3.0.0.tgz#98ddb00056c8390cb751e7788788497f99103b6c"
+  dependencies:
+    safe-buffer "~5.0.1"
+    ultron "~1.1.0"
 
 wtf-8@1.0.0:
   version "1.0.0"

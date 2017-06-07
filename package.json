@@ -9,14 +9,14 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "serve": "ng s --proxy-config proxy.config.json --ssl",
+    "serve": "ng s --proxy-config proxy.config.json",
     "build:aot": "webpack --config webpack.config.aot.js",
     "serve:aot": "lite-server -c=bs-config.aot.js",
     "build:uni": "webpack --config webpack.config.uni.js",
     "serve:uni": "node src/dist/server.js"
   },
   "engines": {
-    "node": "^7.3.0"
+    "node": "^7.10.0"
   },
   "private": true,
   "dependencies": {
@@ -40,6 +40,7 @@
     "graphql-tag": "^2.2.1",
     "http-proxy-middleware": "^0.17.4",
     "rxjs": "^5.4.0",
+    "subscriptions-transport-ws": "^0.7.1",
     "zone.js": "^0.8.11"
   },
   "devDependencies": {
