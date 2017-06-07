@@ -1,40 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
+import { SubscriptionClient } from 'subscriptions-transport-ws';
 import gql from 'graphql-tag';
 
-const quotes = gql`
-  query {
-    authors {
-      id
-      firstName
-      lastName
-    }
-    quotes {
-      id
-      text
-      author {
-        firstName
-        lastName
-      }
-    }
-  }
-`;
-
-const createQuote = gql`
-  mutation createQuote($input: QuoteInput!) {
-    createQuote(
-      input: $input
-    ) {
-      id
-      text
-      author {
-        id
-        firstName
-        lastName
-      }
-    }
-  }
-`;
 
 interface QuotesResponse {
   authors: {
@@ -68,8 +36,34 @@ export class CandidatPresentationComponent implements OnInit {
   constructor(private apollo: Apollo) { }
 
   ngOnInit() {
+    this.apollo.subscribe({
+      query: gql`
+        subscription quoteAdded {
+          quoteAdded {
+            id,
+            text
+          }
+        }
+      `,
+    })
+    .subscribe((truc) => {
+      console.warn(truc);
+    });
+    this.refreshQuotesList();
+  }
+
+  refreshQuotesList() {
     this.apollo.watchQuery({
-      query: quotes
+      query: gql`
+        query {
+          authors { id firstName lastName }
+          quotes {
+            id
+            text
+            author { firstName lastName }
+          }
+        }
+      `,
     })
     .subscribe(({data}) => {
       const cast = data as QuotesResponse;
@@ -80,16 +74,36 @@ export class CandidatPresentationComponent implements OnInit {
 
   addQuote(text: string, author: string) {
     this.apollo.mutate({
-        mutation: createQuote,
+        mutation: gql`
+          mutation createQuote($input: QuoteInput!) {
+            createQuote(input: $input) {
+              id
+              text
+              author { id firstName lastName }
+            }
+          }
+        `,
         variables: {
           input: {
             text,
             author,
           },
         },
+        optimisticResponse: {
+          __typename: 'Mutation',
+          createQuote: {
+            __typename: 'Quote',
+            text,
+            author: {
+              firstName: 'Anne',
+              lastName: 'Onyme',
+            }
+          },
+        },
       })
       .subscribe(({data}) => {
         const cast = data as any;
+        if (!cast.createQuote) {return};
         this.quotesList = this.quotesList.concat([cast.createQuote]);
         this.newQuote = {
           text: '',
