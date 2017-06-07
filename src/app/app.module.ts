@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
+import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
 import { ApolloModule } from 'apollo-angular';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,11 +27,18 @@ import {
 } from './components';
 
 const apolloClientOptions = {};
+const websocketClient = new SubscriptionClient('ws://localhost:5000', {
+  reconnect: true,
+});
+const networkInterface = createNetworkInterface({
+  // uri: 'https://graphql:3000/graphql',
+  uri: 'graphql',
+});
+const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(networkInterface, websocketClient);
+
 const client: ApolloClient = new ApolloClient({
-  networkInterface: createNetworkInterface({
-    // uri: 'https://graphql:3000/graphql',
-    uri: 'graphql',
-  }),
+  dataIdFromObject: (o: any) => o.id,
+  networkInterface: networkInterfaceWithSubscriptions,
 });
 
 export function provideApolloClient(): ApolloClient {
