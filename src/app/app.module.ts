@@ -7,6 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
 import { ApolloModule } from 'apollo-angular';
+import { AppShellModule } from '@angular/app-shell';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,6 +63,7 @@ export function provideApolloClient(): ApolloClient {
   imports: [
     BrowserModule.withServerTransition({ appId: 'candidats' }),
     ApolloModule.forRoot(provideApolloClient),
+    AppShellModule.runtime(),
     MaterialModule,
     FormsModule,
     HttpModule,

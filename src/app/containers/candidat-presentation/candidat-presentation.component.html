@@ -1,9 +1,9 @@
-<div>
+<div *shellRender>
   <h2>Fernand Mouton et Irène de Lutèce</h2>
   <h3>pour la 2ème circonscription de Plougny</h3>
 </div>
 
-<article>
+<article *shellRender>
   <p>ajouter une citation</p>
   <form #quoteInput="ngForm" (ngSubmit)="addQuote(newQuote.text, newQuote.author)">
     <label for="quoteText">citation</label>
@@ -19,8 +19,10 @@
   </form>
 </article>
 
-<article *ngFor="let item of quotesList">
-  <span (click)="deleteQuote(item.id)">[Supprimer]</span>
-  <blockquote>{{ item.text }}</blockquote>
-  <span>{{ item.author?.firstName }} {{ item.author?.lastName }}</span>
-</article>
+<div *shellNoRender>
+  <article *ngFor="let item of quotesList">
+    <span (click)="deleteQuote(item.id)">[Supprimer]</span>
+    <blockquote>{{ item.text }}</blockquote>
+    <span>{{ item.author?.firstName }} {{ item.author?.lastName }}</span>
+  </article>
+</div>
