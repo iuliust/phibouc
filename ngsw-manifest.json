@@ -1,0 +1,23 @@
+{
+  "routing": {
+    "index": "/index.html",
+    "routes": {
+      "/": {
+        "prefix": false
+      },
+      "/presentation": {
+        "prefix": true
+      },
+      "/publications": {
+        "prefix": true
+      },
+      "/agenda": {
+        "prefix": true
+      }
+    }
+  },
+  "push": {
+    "showNotifications": true,
+    "backgroundOnly": false
+  }
+}
